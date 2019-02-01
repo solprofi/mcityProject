@@ -8549,14 +8549,15 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-move@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-move/-/react-move-4.0.1.tgz#0203b7c0467371945eada6146f0f2ccdde826d7a"
-  integrity sha512-MfCdu7B7TbGkMFvrc0Bj9cmhx9vH8ir8W4VHI3LC/frTUhQMXMF1EADRBSg2giCfWxwbtD31Zx3bAKiV7eIGlw==
+react-move@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-move/-/react-move-5.0.0.tgz#39c60f94edccf013adba75bf6f4c22f7dd9774df"
+  integrity sha512-RZnxsgRKkB1nQXYCSVOCxPTa77BuGHCiCfEf0cBqX6MoLXDj4nT4lZmuDFPIg/0ytFT4BKbgpUSAnFWVIvpaFg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     kapellmeister "^2.0.0"
     prop-types "^15.6.2"
+    react-lifecycles-compat "^3.0.4"
 
 react-router-dom@^4.3.1:
   version "4.3.1"
