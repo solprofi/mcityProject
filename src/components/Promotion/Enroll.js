@@ -123,8 +123,15 @@ export default class Enroll extends Component {
                   {this.state.formSuccess}
                 </div>
               )}
+
+              <div className='enroll_discl'>
+                Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+                Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+              </div>
             </div>
           </form>
+
+
         </div>
       </Fade>
     )
