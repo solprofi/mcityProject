@@ -5,8 +5,7 @@ const PublicRoute = ({
   user,
   component: Comp,
   ...rest,
-}) => {
-  return (
+}) => (
     <Route {...rest} component={props => (
       rest.isRestricted ?
         (user ?
@@ -16,10 +15,7 @@ const PublicRoute = ({
         )
         :
         <Comp {...props} user={user} />
-    )}>
-
-    </Route>
+    )} />
   )
-}
 
 export default PublicRoute;
