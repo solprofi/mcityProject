@@ -1,6 +1,7 @@
 import React from 'react';
 import Zoom from 'react-reveal/Zoom';
 import Jersey from '../../resources/images/jersey.jpg';
+import Enroll from './Enroll';
 
 const Promotion = () => {
   return (
@@ -21,6 +22,7 @@ const Promotion = () => {
             </Zoom>
           </div>
         </div>
+        <Enroll />
       </div>
     </div>
   )
