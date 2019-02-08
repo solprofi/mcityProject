@@ -608,8 +608,8 @@ footer .footer_discl {
     flex-grow: 1;
 }
 
-.select_team_layout input[name=result_local_input],
-.select_team_layout input[name=result_away_input] {
+.select_team_layout input[name=resultAway],
+.select_team_layout input[name=resultLocal] {
     width: 60px;
     text-align: center;
     background: #98c6e9;

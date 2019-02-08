@@ -40,7 +40,6 @@ export default class SignIn extends Component {
     }
   }
 
-
   handleInputChange = (event, id) => {
     const newFormData = { ...this.state.formData };
     newFormData[id].value = event.target.value;

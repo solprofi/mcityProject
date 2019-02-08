@@ -6,6 +6,10 @@ import SignIn from './components/SignIn/SignIn';
 import Dashboard from './components/admin/Dashboard';
 import PrivateRoute from './components/authRoutes/PrivateRoute';
 import PublicRoute from './components/authRoutes/PublicRoute';
+import Matches from './components/admin/Matches/Matches';
+import AddMatch from './components/admin/Matches/AddMatch';
+import Players from './components/admin/Players/Players';
+import AddPlayer from './components/admin/Players/AddPlayer';
 
 const Routes = props => (
   <Layout>
@@ -15,6 +19,42 @@ const Routes = props => (
         path={'/dashboard'}
         exact
         component={Dashboard}
+      />
+      <PrivateRoute
+        {...props}
+        path={'/matches'}
+        exact
+        component={Matches}
+      />
+      <PrivateRoute
+        {...props}
+        path={'/players'}
+        exact
+        component={Players}
+      />
+      <PrivateRoute
+        {...props}
+        path={'/matches/editMatch'}
+        exact
+        component={AddMatch}
+      />
+      <PrivateRoute
+        {...props}
+        path={'/matches/editMatch/:id'}
+        exact
+        component={AddMatch}
+      />
+      <PrivateRoute
+        {...props}
+        path={'/players/addPlayer/:id'}
+        exact
+        component={AddPlayer}
+      />
+      <PrivateRoute
+        {...props}
+        path={'/players/addPlayer'}
+        exact
+        component={AddPlayer}
       />
       <PublicRoute
         {...props}
