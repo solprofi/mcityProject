@@ -12,6 +12,7 @@ import Players from './components/admin/Players/Players';
 import AddPlayer from './components/admin/Players/AddPlayer';
 import Team from './components/Team/Team';
 import MatchList from './components/MatchList/MatchList';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 const Routes = props => (
   <Layout>
@@ -85,6 +86,12 @@ const Routes = props => (
         component={SignIn}
         path='/signIn'
         isRestricted={true}
+      />
+      <PublicRoute
+        {...props}
+        exact
+        component={PageNotFound}
+        isRestricted={false}
       />
     </Switch>
   </Layout>
