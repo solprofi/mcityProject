@@ -10,6 +10,8 @@ import Matches from './components/admin/Matches/Matches';
 import AddMatch from './components/admin/Matches/AddMatch';
 import Players from './components/admin/Players/Players';
 import AddPlayer from './components/admin/Players/AddPlayer';
+import Team from './components/Team/Team';
+
 
 const Routes = props => (
   <Layout>
@@ -61,6 +63,13 @@ const Routes = props => (
         exact
         component={Home}
         path='/'
+        isRestricted={false}
+      />
+      <PublicRoute
+        {...props}
+        exact
+        component={Team}
+        path='/team'
         isRestricted={false}
       />
       <PublicRoute

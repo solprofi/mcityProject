@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AdminLayout from '../../../HOC/AdminLayout/AdminLayout';
 import FormField from '../../FormField/FormField';
-import { validateField, firebaseLooper } from '../../../utils';
+import { validateField } from '../../../utils';
 import {
   database,
   databasePlayers,
@@ -77,8 +77,8 @@ export default class AddPlayer extends Component {
               value: 'Keeper'
             },
             {
-              key: 'Defender',
-              value: 'Defender'
+              key: 'Defence',
+              value: 'Defence'
             },
             {
               key: 'Midfield',
@@ -111,12 +111,31 @@ export default class AddPlayer extends Component {
   componentDidMount = () => {
     const playerId = this.props.match.params.id;
     if (playerId) {
-
+      database.ref(`players/${playerId}`).once('value')
+        .then(snapshot => {
+          const playerData = snapshot.val();
+          firebase.storage().ref('players').child(playerData.image)
+            .getDownloadURL().then(url => {
+              this.updateFields(playerData, playerId, 'Edit Player', url);
+            }).catch(e => {
+              this.updateFields({ ...playerData, image: '' }, playerId, 'Edit Player', '');
+            });
+        })
     } else {
       this.setState({
         formType: 'Add Player'
       });
     }
+  }
+
+  formSuccess = message => {
+    this.setState({
+      formSuccess: message,
+    });
+
+    setInterval(() => this.setState({
+      formSuccess: ''
+    }), 2000)
   }
 
   handleInputChange = (event, id, content = '') => {
@@ -140,7 +159,11 @@ export default class AddPlayer extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    const { formData, formType, matchId, } = this.state;
+    const {
+      formData,
+      formType,
+      playerId,
+    } = this.state;
 
     let dataToSubmit = {};
     let isFormValid = true;
@@ -152,6 +175,12 @@ export default class AddPlayer extends Component {
 
     if (isFormValid) {
       if (formType === 'Edit Player') {
+        database.ref(`players/${playerId}`).update(dataToSubmit)
+          .then(() => {
+            this.formSuccess('Updated Successfully');
+          }).catch(e => {
+            this.setState({ formError: true });
+          });
       } else {
         databasePlayers.push(dataToSubmit).then(() => {
           this.props.history.push('/players');
@@ -175,6 +204,22 @@ export default class AddPlayer extends Component {
 
   storeFilename = fileName => {
     this.handleInputChange({}, 'image', fileName);
+  }
+
+  updateFields = (playerData, playerId, formType, defaultImage) => {
+    const newFormData = this.state.formData;
+
+    for (let key in newFormData) {
+      newFormData[key].value = playerData[key];
+      newFormData[key].valid = true;
+    }
+
+    this.setState({
+      playerId,
+      formType,
+      defaultImage,
+      formData: newFormData,
+    })
   }
 
   render() {

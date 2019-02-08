@@ -100,6 +100,7 @@ export default class CustomFileUploader extends Component {
               }}
               src={fileUrl}
               name={name}
+              alt={name}
             />
             <div
               className='remove'
